@@ -1,11 +1,76 @@
+/* ============================================
+   Booking Page Styles
+   ============================================ */
+
 .page {
   min-height: 100vh;
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg);
+}
+
+/* Header */
+.header {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 50%, #001040 100%);
+  color: #ffffff;
+  padding: 32px 24px 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-accent), var(--color-primary-light), var(--color-accent));
+}
+
+.headerContent {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.logoIcon {
+  font-size: 2.25rem;
+}
+
+.logoText {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  background: linear-gradient(135deg, #ffffff 0%, var(--color-accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  font-size: 1rem;
+  opacity: 0.85;
+}
+
+/* Main */
+.main {
+  flex: 1;
+  margin-top: -20px;
+  position: relative;
+  z-index: 2;
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 24px 40px;
 }
 
 .backLink {
@@ -14,10 +79,271 @@
   color: var(--color-primary);
   font-weight: 600;
   font-size: 0.95rem;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   transition: var(--transition);
 }
 
 .backLink:hover {
   color: var(--color-primary-light);
+  transform: translateX(-4px);
+}
+
+.backArrow {
+  margin-right: 6px;
+  font-size: 1.1rem;
+}
+
+/* Train Summary Card */
+.trainSummaryCard {
+  background: var(--color-card);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow);
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  margin-bottom: 24px;
+  border-left: 6px solid var(--color-primary);
+}
+
+.trainNumberSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #f1f5f9;
+  padding: 10px 16px;
+  border-radius: var(--border-radius);
+  min-width: 90px;
+}
+
+.trainIcon {
+  font-size: 1.5rem;
+}
+
+.trainNum {
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: var(--color-primary);
+  margin-top: 4px;
+}
+
+.routeSection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+  gap: 20px;
+}
+
+.routePoint {
+  display: flex;
+  flex-direction: column;
+}
+
+.time {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: 1.1;
+}
+
+.city {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--color-primary);
+  margin-top: 4px;
+}
+
+.date {
+  font-size: 0.8rem;
+  color: var(--color-text-light);
+  margin-top: 2px;
+}
+
+.durationLine {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  max-width: 250px;
+}
+
+.duration {
+  font-size: 0.85rem;
+  color: var(--color-text-light);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.arrowLine {
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  position: relative;
+}
+
+.arrowLine::after {
+  content: '→';
+  position: absolute;
+  right: -2px;
+  top: -9px;
+  color: var(--color-accent-dark);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+/* Booking Layout Grid */
+.bookingGrid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.rightColumn {
+  position: sticky;
+  top: 24px;
+}
+
+/* Footer */
+.footer {
+  background: var(--color-primary-dark);
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+  padding: 20px 24px;
+  font-size: 0.85rem;
+  margin-top: auto;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-size: 1.1rem;
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+/* Temp Toast Styling */
+.tempToast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  border-radius: var(--border-radius);
+  color: #ffffff;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  z-index: 1000;
+  animation: toastSlideIn 0.3s ease-out;
+  min-width: 320px;
+  max-width: 450px;
+}
+
+.toastSuccess {
+  background: var(--color-success);
+}
+
+.toastError {
+  background: var(--color-danger);
+}
+
+.toastIcon {
+  font-weight: 800;
+  font-size: 1.2rem;
+  background: rgba(255, 255, 255, 0.2);
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toastMessage {
+  flex: 1;
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.toastCloseBtn {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 0.9rem;
+  opacity: 0.8;
+  transition: var(--transition);
+}
+
+.toastCloseBtn:hover {
+  opacity: 1;
+}
+
+@keyframes toastSlideIn {
+  from {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 992px) {
+  .bookingGrid {
+    grid-template-columns: 1fr;
+  }
+  .rightColumn {
+    position: static;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 24px 16px 32px;
+  }
+  .logoIcon {
+    font-size: 1.8rem;
+  }
+  .logoText {
+    font-size: 1.6rem;
+  }
+  .container {
+    padding: 0 16px 30px;
+  }
+  .trainSummaryCard {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    padding: 16px;
+  }
+  .trainNumberSection {
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+    padding: 8px;
+  }
+  .trainNum {
+    margin-top: 0;
+  }
+  .routeSection {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+  }
+  .durationLine {
+    max-width: 100%;
+    width: 80%;
+  }
 }
