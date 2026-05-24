@@ -17,7 +17,7 @@ function TrainList({ trains }) {
   return (
     <div className={styles.grid}>
       {trains.map((train, index) => (
-        <div key={train.id} style={{ animationDelay: `${index * 0.1}s` }}>
+        <div key={train.id} className="animateFadeInUp" style={{ animationDelay: `${index * 0.08}s`, opacity: 0 }}>
           <TrainCard train={train} />
         </div>
       ))}
