@@ -162,6 +162,9 @@
 }
 
 .selectBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background: linear-gradient(135deg, var(--color-accent), var(--color-accent-dark));
   color: var(--color-primary-dark);
   padding: 10px 24px;

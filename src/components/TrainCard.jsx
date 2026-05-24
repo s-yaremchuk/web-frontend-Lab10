@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styles from './TrainCard.module.css';
 
 function TrainCard({ train }) {
@@ -61,9 +62,9 @@ function TrainCard({ train }) {
           <span className={styles.priceLabel}>від</span>
           <span className={styles.priceValue}>{minPrice} ₴</span>
         </div>
-        <button className={styles.selectBtn}>
+        <Link to={`/booking/${train.id}`} className={styles.selectBtn}>
           Обрати місця
-        </button>
+        </Link>
       </div>
     </div>
   );
