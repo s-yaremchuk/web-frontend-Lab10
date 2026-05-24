@@ -1,16 +1,87 @@
-# React + Vite
+# Укрзалізниця — Система бронювання залізничних квитків (Лабораторна робота №10)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Повноцінний React-додаток для пошуку рейсів, вибору вагонів, інтерактивного бронювання місць на схемі та оформлення квитків, розроблений у фірмовому стилі Укрзалізниці.
 
-Currently, two official plugins are available:
+## 🌟 Основна функціональність
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Пошук рейсів (з ЛР9)**: пошук потягів за містами відправлення/прибуття, номером потяга та конкретною датою відправлення.
+- **Маршрутизація (React Router)**: плавний перехід між головною сторінкою (`/`) та сторінкою бронювання (`/booking/:trainId`).
+- **Глобальний стан (Context API)**: централізоване управління обраним рейсом, вагоном, вибраними місцями та списком бронювань.
+- **Вибір типу вагона**: можливість вибору вагонів типу **Плацкарт**, **Купе** або **СВ** з відповідною кількістю місць та вартістю.
+- **Інтерактивна схема місць**:
+  - Візуалізація вагону у формі реального потяга (кабіна провідника, коридори, туалети).
+  - Схема місць залежно від типу вагона (SV - 18 нижніх місць; Купе - 36 місць; Плацкарт - 54 місця разом з боковими місцями).
+  - Інтуїтивна кольорова індикація: 🟢 Вільні місця, 🔵 Обрані місця, 🔴 Зайняті (вже заброньовані) місця.
+- **Форма пасажира з валідацією**:
+  - Введення імені, телефону (+380XXXXXXXXX) та email.
+  - Перевірка правильності заповнення полів у реальному часі з виведенням підказок.
+  - Кнопка оформлення активується лише після вибору хоча б одного місця.
+- **Збереження даних (LocalStorage)**:
+  - Автономна робота з mock-сервісом для збереження оформлених квитків.
+  - Зайняті місця автоматично підвантажуються з попередніх бронювань та стають недоступними для вибору.
+- **Анімації та UX**:
+  - Слайд-анімація для кастомного Toast-повідомлення про успіх/помилку.
+  - Плавні переходи, ефекти пульсації для вибраних місць, масштабування при наведенні.
 
-## React Compiler
+## 📁 Структура проєкту
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```
+LB10/
+├── public/
+├── src/
+│   ├── components/
+│   │   ├── TrainCard.jsx        # Картка потяга
+│   │   ├── TrainCard.module.css # Стилі для картки
+│   │   ├── TrainList.jsx        # Список потягів
+│   │   ├── TrainList.module.css # Стилі для списку
+│   │   ├── SearchBar.jsx        # Панель пошуку
+│   │   ├── SearchBar.module.css # Стилі для пошуку
+│   │   ├── WagonSelector.jsx    # Вибір вагона
+│   │   ├── WagonSelector.module.css
+│   │   ├── SeatMap.jsx          # Інтерактивна схема місць
+│   │   ├── SeatMap.module.css   # Стилі для схеми місць
+│   │   ├── BookingForm.jsx      # Форма даних пасажира
+│   │   ├── BookingForm.module.css
+│   │   ├── Toast.jsx            # Toast-сповіщення
+│   │   └── Toast.module.css     # Стилі для Toast
+│   ├── context/
+│   │   └── BookingContext.jsx   # BookingProvider для глобального стану
+│   ├── data/
+│   │   └── trains.js            # Дані про потяги та вагони
+│   ├── services/
+│   │   └── BookingService.js    # Сервіс роботи з LocalStorage
+│   ├── pages/
+│   │   ├── Home.jsx             # Головна сторінка
+│   │   ├── Home.module.css
+│   │   ├── Booking.jsx          # Сторінка бронювання
+│   │   └── Booking.module.css
+│   ├── App.jsx                  # Опис маршрутів
+│   ├── main.jsx                 # Точка входу, підключення BrowserRouter та Provider
+│   └── index.css                # Глобальні стилі та кольори Укрзалізниці
+├── index.html
+├── package.json
+└── README.md
+```
 
-## Expanding the ESLint configuration
+## 🚀 Встановлення та запуск
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. **Перейдіть у папку проєкту**:
+   ```bash
+   cd LB10
+   ```
+
+2. **Встановіть залежності**:
+   ```bash
+   npm install
+   ```
+
+3. **Запустіть сервер для розробки**:
+   ```bash
+   npm run dev
+   ```
+
+Відкрийте посилання [http://localhost:5173](http://localhost:5173) у вашому браузері.
+
+---
+**Виконав**: студент 2 курсу Яремчук Сергій
+**Дисципліна**: Програмування на стороні клієнта
