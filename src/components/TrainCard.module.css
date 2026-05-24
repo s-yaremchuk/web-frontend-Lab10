@@ -1,0 +1,193 @@
+.card {
+  background: var(--color-card);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: var(--transition);
+  animation: fadeInUp 0.5s ease forwards;
+  opacity: 0;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-4px);
+}
+
+.header {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+}
+
+.trainNumber {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.numberIcon {
+  font-size: 1.4rem;
+}
+
+.number {
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.duration {
+  font-size: 0.85rem;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 4px 12px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.durationIcon {
+  font-size: 0.9rem;
+}
+
+.route {
+  padding: 24px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.station {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  min-width: 80px;
+}
+
+.time {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.date {
+  font-size: 0.75rem;
+  color: var(--color-text-light);
+  font-weight: 500;
+}
+
+.city {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-top: 4px;
+}
+
+.routeLine {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex: 1;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.line {
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+}
+
+.arrow {
+  font-size: 1.2rem;
+  color: var(--color-accent-dark);
+  font-weight: 700;
+  padding: 0 4px;
+}
+
+.badges {
+  padding: 0 20px 16px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.badge {
+  background: linear-gradient(135deg, #eef2ff, #e8edff);
+  color: var(--color-primary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 48, 135, 0.1);
+}
+
+.footer {
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #f0f0f0;
+  background: #fafbfc;
+}
+
+.price {
+  display: flex;
+  flex-direction: column;
+}
+
+.priceLabel {
+  font-size: 0.7rem;
+  color: var(--color-text-light);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.priceValue {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--color-primary);
+}
+
+.selectBtn {
+  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-dark));
+  color: var(--color-primary-dark);
+  padding: 10px 24px;
+  border-radius: var(--border-radius-sm);
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: var(--transition);
+  box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+}
+
+.selectBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(255, 215, 0, 0.5);
+}
+
+.selectBtn:active {
+  transform: translateY(0);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
