@@ -1,0 +1,96 @@
+/* ============================================
+   WagonSelector Component Styles
+   ============================================ */
+
+.container {
+  margin-bottom: 24px;
+}
+
+.title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 12px;
+}
+
+.wagonList {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding: 4px 4px 12px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary-light) transparent;
+}
+
+.wagonList::-webkit-scrollbar {
+  height: 6px;
+}
+
+.wagonList::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 48, 135, 0.2);
+  border-radius: 3px;
+}
+
+.wagonList::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-primary-light);
+}
+
+.wagonCard {
+  flex: 0 0 140px;
+  background: var(--color-card);
+  border: 2px solid #e0e4e8;
+  border-radius: var(--border-radius);
+  padding: 12px;
+  text-align: left;
+  transition: var(--transition);
+  box-shadow: var(--shadow);
+}
+
+.wagonCard:hover {
+  border-color: #c0c8d4;
+  transform: translateY(-2px);
+}
+
+.wagonCard.selected {
+  border-color: var(--color-accent);
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  color: #ffffff;
+  box-shadow: var(--shadow-hover);
+}
+
+.wagonHeader {
+  margin-bottom: 8px;
+}
+
+.wagonNumber {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.wagonBody {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.wagonType {
+  font-size: 0.8rem;
+  opacity: 0.8;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.wagonCard.selected .wagonType {
+  opacity: 0.9;
+  color: var(--color-accent);
+}
+
+.wagonPrice {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--color-primary);
+}
+
+.wagonCard.selected .wagonPrice {
+  color: #ffffff;
+}
