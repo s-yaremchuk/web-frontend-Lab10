@@ -111,7 +111,7 @@ function Booking() {
               <span className={styles.trainNum}>{selectedTrain.number}</span>
             </div>
             <div className={styles.routeSection}>
-              <div className={styles.routePoint}>
+              <div className={`${styles.routePoint} ${styles.departure}`}>
                 <span className={styles.time}>{departure.time}</span>
                 <span className={styles.city}>{selectedTrain.from}</span>
                 <span className={styles.date}>{departure.date}</span>
@@ -120,7 +120,7 @@ function Booking() {
                 <span className={styles.duration}>{selectedTrain.duration}</span>
                 <span className={styles.arrowLine}></span>
               </div>
-              <div className={styles.routePoint}>
+              <div className={`${styles.routePoint} ${styles.arrival}`}>
                 <span className={styles.time}>{arrival.time}</span>
                 <span className={styles.city}>{selectedTrain.to}</span>
                 <span className={styles.date}>{arrival.date}</span>

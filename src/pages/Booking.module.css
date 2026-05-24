@@ -138,6 +138,18 @@
 .routePoint {
   display: flex;
   flex-direction: column;
+  max-width: 150px;
+  flex-shrink: 0;
+}
+
+.departure {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.arrival {
+  align-items: flex-end;
+  text-align: right;
 }
 
 .time {
@@ -152,6 +164,9 @@
   font-size: 1rem;
   color: var(--color-primary);
   margin-top: 4px;
+  word-wrap: break-word;
+  word-break: break-word;
+  line-height: 1.2;
 }
 
 .date {

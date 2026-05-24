@@ -30,7 +30,7 @@ function TrainCard({ train }) {
       </div>
 
       <div className={styles.route}>
-        <div className={styles.station}>
+        <div className={`${styles.station} ${styles.departure}`}>
           <span className={styles.time}>{formatTime(departureDate)}</span>
           <span className={styles.date}>{formatDate(departureDate)}</span>
           <span className={styles.city}>{train.from}</span>
@@ -44,7 +44,7 @@ function TrainCard({ train }) {
           <div className={styles.dot}></div>
         </div>
 
-        <div className={styles.station}>
+        <div className={`${styles.station} ${styles.arrival}`}>
           <span className={styles.time}>{formatTime(arrivalDate)}</span>
           <span className={styles.date}>{formatDate(arrivalDate)}</span>
           <span className={styles.city}>{train.to}</span>

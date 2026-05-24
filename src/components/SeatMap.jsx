@@ -30,17 +30,17 @@ function SeatMap() {
     // Comp 1: 1, 2 (left side - top/bottom) & 3, 4 (right side - top/bottom)
     const base = compIndex * 4;
     const compSeats = [
-      { num: base + 1, label: `${base + 1} (Н)` }, // Нижнє
-      { num: base + 2, label: `${base + 2} (В)` }, // Верхнє
-      { num: base + 3, label: `${base + 3} (Н)` },
-      { num: base + 4, label: `${base + 4} (В)` }
+      { num: base + 1, type: 'Н' }, // Нижнє
+      { num: base + 2, type: 'В' }, // Верхнє
+      { num: base + 3, type: 'Н' },
+      { num: base + 4, type: 'В' }
     ];
 
     return (
       <div key={compIndex} className={styles.compartment}>
         <div className={styles.compartmentNumber}>{compIndex + 1}</div>
         <div className={styles.compartmentSeatsGrid}>
-          {compSeats.map((seat) => renderSeat(seat.num, seat.label))}
+          {compSeats.map((seat) => renderSeat(seat.num, seat.type))}
         </div>
       </div>
     );
@@ -50,15 +50,15 @@ function SeatMap() {
     // SV has 2 lower seats per compartment. 9 compartments = 18 seats.
     const base = compIndex * 2;
     const compSeats = [
-      { num: base + 1, label: `${base + 1} (Н)` },
-      { num: base + 2, label: `${base + 2} (Н)` }
+      { num: base + 1, type: 'Н' },
+      { num: base + 2, type: 'Н' }
     ];
 
     return (
       <div key={compIndex} className={styles.compartment}>
         <div className={styles.compartmentNumber}>{compIndex + 1}</div>
         <div className={styles.compartmentSeatsGridSV}>
-          {compSeats.map((seat) => renderSeat(seat.num, seat.label))}
+          {compSeats.map((seat) => renderSeat(seat.num, seat.type))}
         </div>
       </div>
     );
@@ -73,17 +73,17 @@ function SeatMap() {
     for (let i = 0; i < 9; i++) {
       const base = i * 4;
       const compSeats = [
-        { num: base + 1, label: `${base + 1} (Н)` },
-        { num: base + 2, label: `${base + 2} (В)` },
-        { num: base + 3, label: `${base + 3} (Н)` },
-        { num: base + 4, label: `${base + 4} (В)` }
+        { num: base + 1, type: 'Н' },
+        { num: base + 2, type: 'В' },
+        { num: base + 3, type: 'Н' },
+        { num: base + 4, type: 'В' }
       ];
       
       const sideLower = 54 - (i * 2 + 1);
       const sideUpper = 54 - (i * 2);
       const sideSeats = [
-        { num: sideLower, label: `${sideLower} (Н)` },
-        { num: sideUpper, label: `${sideUpper} (В)` }
+        { num: sideLower, type: 'Н' },
+        { num: sideUpper, type: 'В' }
       ];
 
       sections.push(
@@ -91,13 +91,13 @@ function SeatMap() {
           <div className={styles.compartment}>
             <div className={styles.compartmentNumber}>{i + 1}</div>
             <div className={styles.compartmentSeatsGrid}>
-              {compSeats.map((seat) => renderSeat(seat.num, seat.label))}
+              {compSeats.map((seat) => renderSeat(seat.num, seat.type))}
             </div>
           </div>
           <div className={styles.corridorSpace}></div>
           <div className={styles.sideCompartment}>
             <div className={styles.sideSeatsGrid}>
-              {sideSeats.map((seat) => renderSeat(seat.num, seat.label))}
+              {sideSeats.map((seat) => renderSeat(seat.num, seat.type))}
             </div>
           </div>
         </div>
@@ -106,7 +106,7 @@ function SeatMap() {
     return <div className={styles.wagonBodyPlackart}>{sections}</div>;
   };
 
-  const renderSeat = (num, label) => {
+  const renderSeat = (num, typeLabel) => {
     const isBooked = bookedSeats.includes(num);
     const isSelected = selectedSeats.includes(num);
 
@@ -117,6 +117,8 @@ function SeatMap() {
       seatClass = styles.selected;
     }
 
+    const typeFull = typeLabel === 'Н' ? 'нижнє' : 'верхнє';
+
     return (
       <button
         key={num}
@@ -124,9 +126,10 @@ function SeatMap() {
         disabled={isBooked}
         onClick={() => toggleSeat(num)}
         type="button"
-        title={isBooked ? 'Місце заброньовано' : isSelected ? 'Обране вами місце' : 'Вільне місце'}
+        title={isBooked ? `Місце ${num} (${typeFull}) заброньовано` : isSelected ? `Місце ${num} (${typeFull}) обрано вами` : `Місце ${num} (${typeFull}) вільне`}
       >
-        <span className={styles.seatNum}>{label}</span>
+        <span className={styles.seatNum}>{num}</span>
+        <span className={styles.seatType}>{typeLabel}</span>
       </button>
     );
   };
