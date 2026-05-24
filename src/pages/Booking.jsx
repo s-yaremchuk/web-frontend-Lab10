@@ -6,6 +6,7 @@ import BookingService from '../services/BookingService';
 import WagonSelector from '../components/WagonSelector';
 import SeatMap from '../components/SeatMap';
 import BookingForm from '../components/BookingForm';
+import Toast from '../components/Toast';
 import styles from './Booking.module.css';
 
 const formatDateTime = (dateString) => {
@@ -22,22 +23,6 @@ const formatDateTime = (dateString) => {
   }).format(date);
   return { date: dateFormatted, time: timeFormatted };
 };
-
-// Простий локальний Toast для ЛР15, який буде винесено в окремий компонент в ЛР16
-function TempToast({ message, type, onClose }) {
-  useEffect(() => {
-    const timer = setTimeout(onClose, 4000);
-    return () => clearTimeout(timer);
-  }, [onClose]);
-
-  return (
-    <div className={`${styles.tempToast} ${type === 'success' ? styles.toastSuccess : styles.toastError}`}>
-      <span className={styles.toastIcon}>{type === 'success' ? '✓' : '✗'}</span>
-      <span className={styles.toastMessage}>{message}</span>
-      <button className={styles.toastCloseBtn} onClick={onClose}>✕</button>
-    </div>
-  );
-}
 
 function Booking() {
   const { trainId } = useParams();
@@ -163,7 +148,7 @@ function Booking() {
       </footer>
 
       {toast && (
-        <TempToast
+        <Toast
           message={toast.message}
           type={toast.type}
           onClose={() => setToast(null)}
